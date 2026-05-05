@@ -2,6 +2,7 @@
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 import { HiStar } from 'react-icons/hi2'
 import { FiMapPin } from 'react-icons/fi'
 import { cn } from '@/lib/utils'
@@ -95,9 +96,9 @@ export function ProviderListingCard({ provider, className }: ProviderListingCard
         <span className="text-sm font-semibold text-blue-600">
           {priceLabel}
         </span>
-        <Button variant="outline" size="sm">
+        <Link href={`/providers/${provider.id}`} className="inline-flex h-9 items-center justify-center whitespace-nowrap rounded-lg border border-input bg-background px-3 text-sm font-medium transition-colors duration-150 hover:bg-accent hover:text-accent-foreground">
           View Profile
-        </Button>
+        </Link>
       </div>
     </Card>
   )

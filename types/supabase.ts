@@ -69,6 +69,10 @@ export interface Database {
           rating: number
           total_reviews: number
           avatar_url: string | null
+          website_url: string | null
+          business_hours: string | null
+          emergency_service: string | null
+          service_area: string | null
           created_at: string
         }
         Insert: {
@@ -83,6 +87,10 @@ export interface Database {
           rating?: number
           total_reviews?: number
           avatar_url?: string | null
+          website_url?: string | null
+          business_hours?: string | null
+          emergency_service?: string | null
+          service_area?: string | null
           created_at?: string
         }
         Update: {
@@ -97,6 +105,10 @@ export interface Database {
           rating?: number
           total_reviews?: number
           avatar_url?: string | null
+          website_url?: string | null
+          business_hours?: string | null
+          emergency_service?: string | null
+          service_area?: string | null
           created_at?: string
         }
       }
@@ -128,6 +140,25 @@ export type ServiceCategory = Database['public']['Tables']['service_categories']
 
 export type ServiceProvider = Database['public']['Tables']['service_providers']['Row'] & {
   primary_service: string | null
+}
+
+// Provider detail page — provider with all services they offer
+export type ProviderServiceOffering = {
+  id: string
+  name: string
+  slug: string
+  description: string | null
+  base_price: number | null
+}
+
+export type ProviderDetail = {
+  provider: Database['public']['Tables']['service_providers']['Row']
+  services: ProviderServiceOffering[]
+  category: {
+    name: string
+    slug: string
+    icon_name: string
+  } | null
 }
 
 // Services listing page — service with its category info and provider count
